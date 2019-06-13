@@ -25,9 +25,8 @@ reading_summary <- reading_grouped %>%
 reading_long <- reading_summary %>% gather(type, score, c(flesch_reading_ease, flesch_kincaid_grade_level))
   
 
-p <- ggplot(reading_long, aes(x=author, y=score)) +
-      geom_bar(stat='identity') +
-      facet_grid(rows=vars(type)) +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+p <- ggplot(reading_long, aes(x=author, y=score)) + geom_bar(stat='identity')
+p <- p + facet_grid(rows=vars(type))
+p <- p + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 plot(p)
